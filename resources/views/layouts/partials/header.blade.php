@@ -8,7 +8,7 @@
     </div>
     <div class="page-main-header col">
         <div class="header-left">
-            <form class="form-inline search-full col" action="#" method="get">
+            <!-- <form class="form-inline search-full col" action="#" method="get">
                 <div class="form-group w-100">
                     <div class="Typeahead Typeahead--twitterUsers">
                         <div class="u-posRelative">
@@ -18,7 +18,7 @@
                         <div class="Typeahead-menu"></div>
                     </div>
                 </div>
-            </form>
+            </form> -->
             <div class="form-group-header d-lg-block d-none">
                 <div class="Typeahead Typeahead--twitterUsers">
                     <div class="u-posRelative d-flex align-items-center">
