@@ -1,6 +1,6 @@
 <header class="page-header row">
     <div class="logo-wrapper d-flex align-items-center col-auto">
-        <a href="index.html"><img class="light-logo img-fluid" src="images/logo1.png" alt="logo"><img class="dark-logo img-fluid" src="images/logo-dark.png" alt="logo"></a>
+        <a style="margin-left:40px; width: 100px;" href="index.html"><img class="light-logo img-fluid" src="https://www.hajjisoft.com/public/uploads/business_logos/1740289852_WhatsApp%20Image%202025-02-23%20at%2011.48.55_5481131b.jpg" alt="logo"><img class="dark-logo img-fluid" src="images/logo-dark.png" alt="logo"></a>
         <a class="close-btn toggle-sidebar" href="javascript:void(0)">
             <svg class="svg-color">
       <use href="images/iconly-sprite.svg#Category"></use>

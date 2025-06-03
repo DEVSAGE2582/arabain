@@ -14,13 +14,14 @@
             </li>
 
             @php
-                $permission=DB::table('role_has_permissions')->where('role_id', Auth::user()->role)->pluck('permission_id')->toArray();
-                $permissionNames = DB::table('permissions')->whereIn('id', $permission)->pluck('name')->toArray();
+            $userPermissions = auth()->user()->getAllPermissions()
+                ->pluck('name')
+                ->mapWithKeys(fn($permission) => [$permission => true])
+                ->toArray();
+        @endphp
+        
 
-                $allper = array_fill_keys($permissionNames, true);
-            @endphp
-           @if($allper['dashboard']??false) 
-
+            @if($userPermissions['dashboard'])
             <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="{{route('dashboard')}}">
                     <svg class="stroke-icon">
@@ -34,7 +35,7 @@
                     <li> <a href="dashboard-03.html">Education</a></li>
                 </ul> -->
             </li>
-        @endif
+            @endif
             <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
                     <svg class="stroke-icon">

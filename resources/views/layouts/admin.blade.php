@@ -111,6 +111,34 @@
 <!-- Bootstrap 5.3 JS Bundle with Popper (CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $('.edit-btn').on('click', function() {
+            const row = $(this).closest('tr');
+            $('#rowIndex').val(row.index());
+            $('#editName').val(row.find('td:eq(0)').text());
+            $('#editPosition').val(row.find('td:eq(1)').text());
+            $('#editSalary').val(row.find('td:eq(2)').text());
+            $('#editLocation').val(row.find('td:eq(3)').text());
+            $('#editEmail').val(row.find('td:eq(6)').text());
+            $('#editModal').modal('show');
+        });
+        $('#editForm').on('submit', function(e) {
+            e.preventDefault();
+            const index = $('#rowIndex').val();
+            const row = $('#employeeTable tbody tr').eq(index);
+            row.find('td:eq(0)').text($('#editName').val());
+            row.find('td:eq(1)').text($('#editPosition').val());
+            row.find('td:eq(2)').text($('#editSalary').val());
+            row.find('td:eq(3)').text($('#editLocation').val());
+            row.find('td:eq(6)').text($('#editEmail').val());
+            $('#editModal').modal('hide');
+        });
+        $('.delete-btn').on('click', function() {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
 
 </body>
 

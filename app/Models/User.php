@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Models;
-use Spatie\Permission\Traits\HasRoles;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
     use HasFactory, Notifiable;
     use HasRoles;
 
@@ -20,32 +22,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'surname',
-        'first_name',
-        'last_name',
-        'business_name',
-        'username',
-        'designation',
+        'name',
         'email',
-        'mobile_no',
-        'active_days',
         'password',
-        'business_id',
-        'is_cmmsn_agnt',
-        'contact_no',
-        'address',
-        'cmmsn_percent',
-        'language',
-        'selected_contacts',
-        'role',
-        'status',
-        'company',
-        'company_id',
-        'my_bid',
-        'emp_id',
-        'user_of',
-        'user_limit',
-        'used_limit'
     ];
 
     /**
