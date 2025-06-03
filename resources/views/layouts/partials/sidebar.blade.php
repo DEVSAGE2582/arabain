@@ -14,41 +14,46 @@
             </li>
 
             @php
-            $userPermissions = auth()->user()->getAllPermissions()
-                ->pluck('name')
-                ->mapWithKeys(fn($permission) => [$permission => true])
-                ->toArray();
-        @endphp
-        
+                $userPermissions = auth()
+                    ->user()
+                    ->getAllPermissions()
+                    ->pluck('name')
+                    ->mapWithKeys(fn($permission) => [$permission => true])
+                    ->toArray();
+            @endphp
 
-            @if($userPermissions['dashboard'])
-            <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
-                <a class="sidebar-link" href="{{route('dashboard')}}">
-                    <svg class="stroke-icon">
-                        <use href="images/iconly-sprite.svg#Home-dashboard"></use>
-                    </svg>
-                    <h6>Dashboards</h6><span class="badge">3</span><i class="iconly-Arrow-Right-2 icli"></i>
-                </a>
-                <!-- <ul class="sidebar-submenu">
+
+            @if (!empty($userPermissions['dashboard']))
+                <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+                    <a class="sidebar-link" href="{{ route('dashboard') }}">
+                        <svg class="stroke-icon">
+                            <use href="images/iconly-sprite.svg#Home-dashboard"></use>
+                        </svg>
+                        <h6>Dashboards</h6><span class="badge">3</span><i class="iconly-Arrow-Right-2 icli"></i>
+                    </a>
+                    <!-- <ul class="sidebar-submenu">
                     <li> <a href="index.html">Default</a></li>
                     <li><a href="dashboard-02.html">Ecommerce </a></li>
                     <li> <a href="dashboard-03.html">Education</a></li>
                 </ul> -->
-            </li>
+                </li>
             @endif
-            <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
-                <a class="sidebar-link" href="javascript:void(0)">
-                    <svg class="stroke-icon">
-                        <use href="images/iconly-sprite.svg#Pie"></use>
-                    </svg>
-                    <h6 class="lan-2">Widgets </h6><i class="iconly-Arrow-Right-2 icli"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li> <a href="general-widget.html">General</a></li>
-                    <li><a href="chart-widget.html">Chart</a></li>
-                </ul>
-            </li>
-            <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+
+            @if (!empty($userPermissions['employee']))
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+                    <a class="sidebar-link" href="javascript:void(0)">
+                        <svg class="stroke-icon">
+                            <use href="images/iconly-sprite.svg#Pie"></use>
+                        </svg>
+                        <h6 class="lan-2">Employee </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li> <a href="{{ route('employee.list') }}">Employee list</a></li>
+                        <li><a href="chart-widget.html">Chart</a></li>
+                    </ul>
+                </li>
+            @endif
+            <!-- <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
                     <svg class="stroke-icon">
                         <use href="images/iconly-sprite.svg#Document"></use>

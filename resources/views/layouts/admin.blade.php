@@ -62,7 +62,6 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 
 <!-- Bootstrap -->
-<script src="{{ asset('assets/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}" defer></script>
 <script src="{{ asset('js/popper.min.js') }}" defer></script>
 
 <!-- FontAwesome -->
@@ -78,16 +77,16 @@
 <script src="{{ asset('js/config.js') }}"></script>
 
 <!-- Charts -->
-<script src="{{ asset('js/apex-chart.js') }}"></script>
-<script src="{{ asset('js/stock-prices.js') }}"></script>
+{{-- <script src="{{ asset('js/apex-chart.js') }}"></script> --}}
+{{-- <script src="{{ asset('js/stock-prices.js') }}"></script> --}}
 
 <!-- Scrollbar -->
 <script src="{{ asset('js/simplebar.js') }}"></script>
 
 <!-- UI -->
 <script src="{{ asset('js/custom.js') }}"></script>
-<script src="{{ asset('js/slick.min.js') }}"></script>
-<script src="{{ asset('js/slick.js') }}"></script>
+{{-- <script src="{{ asset('js/slick.min.js') }}"></script>
+<script src="{{ asset('js/slick.js') }}"></script> --}}
 
 <!-- DataTables -->
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -99,8 +98,8 @@
 <script src="{{ asset('js/customizer.js') }}"></script>
 
 <!-- Tilt Effects -->
-<script src="{{ asset('js/tilt.jquery.js') }}"></script>
-<script src="{{ asset('js/tilt-custom.js') }}"></script>
+{{-- <script src="{{ asset('js/tilt.jquery.js') }}"></script> --}}
+{{-- <script src="{{ asset('js/tilt-custom.js') }}"></script> --}}
 
 <!-- Dashboard Scripts -->
 <script src="{{ asset('js/dashboard_1.js') }}"></script>
