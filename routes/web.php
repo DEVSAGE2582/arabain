@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoleController;
 
@@ -20,6 +20,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/Dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::prefix('employee')->name('employee.')->controller(EmployeeController::class)->group(function () {
         Route::get('/list', 'index')->name('list');
@@ -27,12 +28,21 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('store');
         Route::put('/update/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::post('/{id}/toggle-status', 'toggleStatus')->name('toggleStatus');
+    });
 
+    Route::prefix('bank')->name('bank.')->controller(BankController::class)->group(function () {
+        Route::get('/list', 'index')->name('list');
+        Route::post('/store', 'store')->name('store');
+        Route::post('/{id}/toggle-status', 'toggleStatus')->name('toggleStatus');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::post('/transfer', 'transfer')->name('transfer');
 
 
     });
 
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
     Route::prefix('roles')->name('roles.')->controller(RoleController::class)->group(function () {

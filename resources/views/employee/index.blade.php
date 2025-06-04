@@ -34,7 +34,7 @@
                         <!-- Card Header -->
                         <div class="card-header pb-0 card-no-border d-flex justify-content-between align-items-center">
                             <h3>Employee List</h3>
-                            <a href="{{ route('employee.create') }}" class="btn btn-dark">Add Employee</a>
+                            {{-- <a href="{{ route('employee.create') }}" class="btn btn-dark">Add Employee</a> --}}
                         </div>
 
                         <!-- Card Body -->
@@ -63,7 +63,11 @@
                                                 <td>{{ $employee->email }}</td>
                                                 <td>{{ $employee->dob }}</td>
                                                 <td>{{ $employee->doj }}</td>
-                                                <td><span class="badge rounded-pill bg-success">Hired</span></td>
+                                                <td>
+                                                    <input type="checkbox" class="toggle-status"
+                                                        data-id="{{ $employee->id }}"
+                                                        {{ $employee->status ? 'checked' : '' }}>
+                                                </td>
                                                 <td>
                                                     <ul class="action list-inline mb-0">
                                                         <li class="list-inline-item edit">
@@ -96,6 +100,39 @@
                                                                 <i class="icon-pencil-alt"></i>
                                                             </a>
                                                         </li>
+
+                                                        <li class="list-inline-item view">
+                                                            <a href="javascript:void(0);" class="viewBtn text-info"
+                                                                data-bs-toggle="modal" data-bs-target="#viewModal"
+                                                                data-id="{{ $employee->id }}"
+                                                                data-first_name="{{ $employee->first_name }}"
+                                                                data-last_name="{{ $employee->last_name }}"
+                                                                data-contact_no="{{ $employee->contact_no }}"
+                                                                data-email="{{ $employee->email }}"
+                                                                data-passport_no="{{ $employee->passport_no }}"
+                                                                data-issue_date="{{ $employee->issue_date }}"
+                                                                data-expiry_date="{{ $employee->expiry_date }}"
+                                                                data-id_no="{{ $employee->id_no }}"
+                                                                data-mailing_address="{{ $employee->mailing_address }}"
+                                                                data-nationality="{{ $employee->nationality }}"
+                                                                data-father_name="{{ $employee->father_name }}"
+                                                                data-mother_name="{{ $employee->mother_name }}"
+                                                                data-dob="{{ $employee->dob }}"
+                                                                data-doj="{{ $employee->doj }}"
+                                                                data-designation="{{ $employee->designation }}"
+                                                                data-qualification="{{ $employee->qualification }}"
+                                                                data-salary="{{ $employee->salary }}"
+                                                                data-bonus="{{ $employee->bonus }}"
+                                                                data-food_allowance="{{ $employee->food_allowance }}"
+                                                                data-transport_allowance="{{ $employee->transport_allowance }}"
+                                                                data-job_note="{{ $employee->job_note }}"
+                                                                data-id_image="{{ asset($employee->id_image) }}"
+                                                                data-photo="{{ asset($employee->photo) }}"
+                                                                title="View Details">
+                                                                <i class="icon-eye"></i>
+                                                            </a>
+                                                        </li>
+
                                                         <li class="list-inline-item delete">
                                                             <button type="button" class="btn btn-link text-danger p-0"
                                                                 onclick="openDeleteModal({{ $employee->id }})">
@@ -295,6 +332,71 @@
                             </div>
 
 
+                            <!-- View Modal -->
+                            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="viewModalLabel">Employee Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <strong>Name:</strong> <span id="view-name"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Email:</strong> <span id="view-email"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <strong>Contact No:</strong> <span id="view-contact_no"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>DOB:</strong> <span id="view-dob"></span>
+                                                </div>
+                                            </div>
+                                            <!-- Add more fields as needed -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <strong>Designation:</strong> <span id="view-designation"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Qualification:</strong> <span id="view-qualification"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <strong>Salary:</strong> <span id="view-salary"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Job Note:</strong> <span id="view-job_note"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <strong>ID Image:</strong><br>
+                                                    <img id="view-id_image" src="" alt="ID Image"
+                                                        class="img-fluid" style="max-height:150px;">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong>Photo:</strong><br>
+                                                    <img id="view-photo" src="" alt="Photo" class="img-fluid"
+                                                        style="max-height:150px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
 
                             {{-- Optional: remove modal includes since you use a separate page for Add --}}
@@ -364,4 +466,62 @@
         const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
         deleteModal.show();
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.toggle-status').change(function() {
+            let status = $(this).is(':checked') ? 1 : 0;
+            let employeeId = $(this).data('id');
+
+            $.ajax({
+                url: '/employee/' + employeeId + '/toggle-status',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    status: status
+                },
+                success: function(response) {
+                    console.log('Status updated:', response.new_status ? 'Active' :
+                        'Inactive');
+                },
+                error: function() {
+                    alert('Error updating status.');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewModal = document.getElementById('viewModal');
+        viewModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+
+            // Extract data attributes from clicked button
+            const firstName = button.getAttribute('data-first_name');
+            const lastName = button.getAttribute('data-last_name');
+            const email = button.getAttribute('data-email');
+            const contactNo = button.getAttribute('data-contact_no');
+            const dob = button.getAttribute('data-dob');
+            const designation = button.getAttribute('data-designation');
+            const qualification = button.getAttribute('data-qualification');
+            const salary = button.getAttribute('data-salary');
+            const jobNote = button.getAttribute('data-job_note');
+            const idImage = button.getAttribute('data-id_image');
+            const photo = button.getAttribute('data-photo');
+
+            // Set modal content
+            document.getElementById('view-name').textContent = firstName + ' ' + lastName;
+            document.getElementById('view-email').textContent = email;
+            document.getElementById('view-contact_no').textContent = contactNo;
+            document.getElementById('view-dob').textContent = dob;
+            document.getElementById('view-designation').textContent = designation;
+            document.getElementById('view-qualification').textContent = qualification;
+            document.getElementById('view-salary').textContent = salary;
+            document.getElementById('view-job_note').textContent = jobNote;
+            document.getElementById('view-id_image').src = idImage;
+            document.getElementById('view-photo').src = photo;
+        });
+    });
 </script>

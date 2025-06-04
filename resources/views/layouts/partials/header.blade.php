@@ -291,35 +291,23 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-img"><img src="images/profile.png" alt="user"></div>
                         <div class="user-content ms-2">
-                            <h6 class="mb-0">Ava Davis</h6>
+                            <h6 class="mb-0">{{ Auth::user()->full_name }}</h6>
                             <p class="mb-0">Admin</p>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li class="d-flex align-items-center px-3 py-2">
                             <svg class="svg-color me-2">
-                                <use href="images/iconly-sprite.svg#Profile"></use>
-                            </svg>
-                            <a href="user-profile.html">Account</a>
-                        </li>
-                        <li class="d-flex align-items-center px-3 py-2">
-                            <svg class="svg-color me-2">
-                                <use href="images/iconly-sprite.svg#Message"></use>
-                            </svg>
-                            <a href="letter-box.html">Inbox</a>
-                        </li>
-                        <li class="d-flex align-items-center px-3 py-2">
-                            <svg class="svg-color me-2">
-                                <use href="images/iconly-sprite.svg#Document"></use>
-                            </svg>
-                            <a href="to-do.html">Task</a>
-                        </li>
-                        <li class="d-flex align-items-center px-3 py-2">
-                            <svg class="svg-color me-2">
                                 <use href="images/iconly-sprite.svg#Login"></use>
                             </svg>
-                            <a href="login.html">Log Out</a>
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
+                                Out</a>
                         </li>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </ul>
                 </li>
             </ul>

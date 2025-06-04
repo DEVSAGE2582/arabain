@@ -94,7 +94,7 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
-       // dd($request->all());
+        //dd($request->all());
         $employee = Employee::findOrFail($id);
 
         $data = $request->except(['id_image', 'photo']);
@@ -124,6 +124,15 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
-        return redirect()->back()->with('success', 'Employee deleted successfully!');
+        return redirect()->back()->with('error', 'Employee deleted successfully!');
+    }
+
+    public function toggleStatus(Request $request, $id)
+    {
+        $employee = Employee::findOrFail($id);
+        $employee->status = $request->status;
+        $employee->save();
+
+        return response()->json(['success' => true, 'new_status' => $employee->status]);
     }
 }
