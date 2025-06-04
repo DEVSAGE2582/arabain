@@ -15,15 +15,32 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Assign Permissions:</label><br>
-            @foreach($permissions as $permission)
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="permissions[]" value="{{ $permission->name }}"
-                        id="perm-{{ $permission->id }}"
-                        {{ $role->permissions->contains('name', $permission->name) ? 'checked' : '' }}>
-                    <label class="form-check-label" for="perm-{{ $permission->id }}">{{ $permission->name }}</label>
-                </div>
-            @endforeach
+            <label class="form-label">Assign Permissions:</label>
+            <div class="accordion" id="permissionsAccordion">
+                @foreach($permissions as $group => $groupPermissions)
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{ $loop->index }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $loop->index }}">
+                                {{ ucfirst($group) }} Permissions
+                            </button>
+                        </h2>
+                        <div id="collapse-{{ $loop->index }}" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                @foreach($groupPermissions as $permission)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="permissions[]" value="{{ $permission->name }}"
+                                            id="perm-{{ $permission->id }}"
+                                            {{ $role->permissions->contains('name', $permission->name) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="perm-{{ $permission->id }}">
+                                            {{ ucwords(str_replace('.', ' ', $permission->name)) }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Update Role</button>

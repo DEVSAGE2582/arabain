@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -20,6 +21,18 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/Dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/', [UserController::class, 'store'])->name('users.store');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::get('/generate-username', [UserController::class, 'generateUsername'])->name('users.generate-username');
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+    });
 
 
     Route::prefix('roles')->name('roles.')->group(function () {

@@ -39,12 +39,18 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role created successfully.');
     }
 
-    public function edit(Role $role)
-{
-    $permissions = Permission::all();
-    return view('roles.edit', compact('role', 'permissions'));
-}
-
+    public function edit($id)
+    {
+        $role = Role::findOrFail($id);
+    
+        // Group permissions by prefix before the dot (like "user" in "user.create")
+        $permissions = Permission::all()->groupBy(function ($perm) {
+            return explode('.', $perm->name)[0]; // Example: "user.create" => "user"
+        });
+    
+        return view('roles.edit', compact('role', 'permissions'));
+    }
+    
 public function destroy(Role $role)
 {
     $role->delete();

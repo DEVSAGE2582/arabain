@@ -19,10 +19,10 @@
                 ->mapWithKeys(fn($permission) => [$permission => true])
                 ->toArray();
         @endphp
-        
 
-            @if($userPermissions['dashboard'])
-            <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+
+        @if (!empty($userPermissions['dashboard.dashboard']))
+        <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="{{route('dashboard')}}">
                     <svg class="stroke-icon">
                         <use href="images/iconly-sprite.svg#Home-dashboard"></use>
@@ -36,19 +36,55 @@
                 </ul> -->
             </li>
             @endif
-            <!-- <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+
+            @if (!empty($userPermissions['roles.show']))
+
+             <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
                     <svg class="stroke-icon">
                         <use href="images/iconly-sprite.svg#Pie"></use>
                     </svg>
-                    <h6 class="lan-2">Widgets </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                    <h6 class="lan-2">Role Management </h6><i class="iconly-Arrow-Right-2 icli"></i>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li> <a href="general-widget.html">General</a></li>
-                    <li><a href="chart-widget.html">Chart</a></li>
+                    <li> <a href="{{route('roles.index')}}">Roles</a></li>
+                    <li><a href="{{route('roles.create')}}">Create Role</a></li>
                 </ul>
             </li>
-            <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
+            @endif
+
+        @if (!empty($userPermissions['users.show']))
+
+            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+                <a class="sidebar-link" href="javascript:void(0)">
+                    <svg class="stroke-icon">
+                        <use href="images/iconly-sprite.svg#Pie"></use>
+                    </svg>
+                    <h6 class="lan-2">Users Management </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li> <a href="{{route('users.index')}}">Users</a></li>
+                    <li><a href="{{route('users.create')}}">Create User</a></li>
+                </ul>
+            </li>
+            @endif
+
+            @if (!empty($userPermissions['user.view']))
+
+            <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+                <a class="sidebar-link" href="javascript:void(0)">
+                    <svg class="stroke-icon">
+                        <use href="images/iconly-sprite.svg#Pie"></use>
+                    </svg>
+                    <h6 class="lan-2">Role Management </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li> <a href="general-widget.html">Roles</a></li>
+                    <li><a href="chart-widget.html">Create Role</a></li>
+                </ul>
+            </li>
+            @endif
+          <!--  <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
                     <svg class="stroke-icon">
                         <use href="images/iconly-sprite.svg#Document"></use>
