@@ -41,8 +41,6 @@
 </head>
 
 
-      
-
 <body>
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
