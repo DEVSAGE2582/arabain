@@ -14691,7 +14691,7 @@ input:focus {
   color: var(--theme-default);
   border-radius: 10px;
   padding: 5px 10px;
-  width: 100px;
+  width: 180px;
   text-align: left;
 }
 .dropdown .dropdown-toggle:after {

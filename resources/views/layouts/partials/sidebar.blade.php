@@ -34,7 +34,7 @@
                     <li><a href="dashboard-02.html">Ecommerce </a></li>
                     <li> <a href="dashboard-03.html">Education</a></li>
                 </ul> -->
-            </li>
+                </li>
             @endif
 
             @if (!empty($userPermissions['roles.show']))
