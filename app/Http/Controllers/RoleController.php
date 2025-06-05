@@ -11,14 +11,19 @@ class RoleController extends Controller
     // Show list of roles
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::where('id', '!=', 2)->get();
         return view('roles.index', compact('roles'));
     }
 
     // Show form to create a new role
     public function create()
     {
-        $permissions = Permission::all();
+        // Fetch all permissions and group by prefix
+        $permissions = Permission::all()->groupBy(function ($perm) {
+            // Ensure $perm->name exists and is a string
+            return is_string($perm->name) ? explode('.', $perm->name)[0] : 'ungrouped';
+        });
+
         return view('roles.create', compact('permissions'));
     }
 
@@ -38,7 +43,6 @@ class RoleController extends Controller
 
         return redirect()->route('roles.index')->with('success', 'Role created successfully.');
     }
-
     public function edit($id)
     {
         $role = Role::findOrFail($id);

@@ -13,8 +13,12 @@ class UserController extends Controller
     // Show all users
     public function index()
     {
-        $users = User::with('roles')->get();
-        return view('manage_user.index', compact('users'));
+        $users = User::with('roles')
+            ->whereDoesntHave('roles', function ($query) {
+                $query->where('id', 2); 
+            })
+            ->get();
+                return view('manage_user.index', compact('users'));
     }
 
     // Show form to create user
