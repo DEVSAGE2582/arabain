@@ -84,6 +84,35 @@
                 </ul>
             </li>
             @endif
+
+             @if (!empty($userPermissions['employee']))
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+                    <a class="sidebar-link" href="javascript:void(0)">
+                        <svg class="stroke-icon">
+                            <use href="images/iconly-sprite.svg#Pie"></use>
+                        </svg>
+                        <h6 class="lan-2">Employee </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li> <a href="{{ route('employee.list') }}">Employee list</a></li>
+                        <li><a href="{{ route('employee.create') }}">Employee Create</a></li>
+                    </ul>
+                </li>
+            @endif
+
+            
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
+                    <a class="sidebar-link" href="javascript:void(0)">
+                        <svg class="stroke-icon">
+                            <use href="images/iconly-sprite.svg#Pie"></use>
+                        </svg>
+                        <h6 class="lan-2">Bank Accounts </h6><i class="iconly-Arrow-Right-2 icli"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li> <a href="{{ route('bank.list') }}">List Accounts</a></li>
+                        {{-- <li><a href="{{ route('employee.create') }}">Employee Create</a></li> --}}
+                    </ul>
+                </li>
           <!--  <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
                     <svg class="stroke-icon">
