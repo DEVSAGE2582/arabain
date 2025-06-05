@@ -185,7 +185,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-6 col-xl-8 proorder-xxl-8 col-lg-12 col-md-6 box-col-7">
+            {{-- <div class="col-xxl-6 col-xl-8 proorder-xxl-8 col-lg-12 col-md-6 box-col-7">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
                         <h3>Transition History</h3>
@@ -376,8 +376,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-4 proorder-xxl-9 col-md-6 box-col-5">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-4 proorder-xxl-9 col-md-6 box-col-5">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -457,8 +457,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-4 proorder-xxl-3 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-4 proorder-xxl-3 col-md-6 box-col-6">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -491,8 +491,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-4 proorder-xxl-12 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-4 proorder-xxl-12 col-md-6 box-col-6">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -603,8 +603,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 proorder-xxl-6 box-col-12">
+            </div> --}}
+            {{-- <div class="col-lg-6 proorder-xxl-6 box-col-12">
                 <div class="card growthcard">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -624,8 +624,8 @@
                         <div id="growth-chart"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-5 proorder-xxl-4 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-5 proorder-xxl-4 col-md-6 box-col-6">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -771,8 +771,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-4 proorder-xxl-10 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-4 proorder-xxl-10 col-md-6 box-col-6">
                 <div class="card height-equal">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -862,8 +862,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-3 col-xl-4 proorder-xxl-11 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-3 col-xl-4 proorder-xxl-11 col-md-6 box-col-6">
                 <div class="card height-equal">
                     <div class="card-header card-no-border pb-0">
                         <div class="header-top">
@@ -895,8 +895,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-6 col-xl-7 proorder-xxl-5 col-md-6 box-col-6">
+            </div> --}}
+            {{-- <div class="col-xxl-6 col-xl-7 proorder-xxl-5 col-md-6 box-col-6">
                 <div class="card height-equal">
                     <div class="card-header card-no-border pb-0">
                         <h3>Manage Invoice</h3>
@@ -1104,7 +1104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>@endsection
