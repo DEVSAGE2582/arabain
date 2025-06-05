@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use App\User;
+use App\Models\User;
 use Cache;
 use Carbon;
 use Validator;
@@ -84,6 +84,15 @@ class LoginController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $user = User::where('username', $request->username)->first();
+        // dd($user);
+        if($user->active=='inactive'){
+            // dd('sds');
+            return view('errors.active_over');
+
+        }
+
 
         // Attempt to authenticate the user
         if (Auth::attempt($request->only('username', 'password'), $request->has('remember'))) {

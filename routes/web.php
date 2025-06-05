@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImpersonateController;
 
 
 
@@ -33,7 +34,9 @@ Route::middleware('auth')->group(function () {
 
 
     });
+    Route::get('/impersonate/{user_id}', [ImpersonateController::class,'impersonate'])->name('impersonate');
 
+    Route::get('/impersonate-voucher-company/{user_id}',  [ImpersonateController::class,'impersonate_voucher_company'])->name('impersonate_voucher_company');
 
     Route::prefix('roles')->name('roles.')->group(function () {
         Route::get('/', [RoleController::class, 'index'])->name('index');

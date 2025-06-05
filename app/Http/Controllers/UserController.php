@@ -57,12 +57,15 @@ public function generateUsername()
     // Store new user
     public function store(Request $request)
 {
+    // dd($request->all());
     $request->validate([
         'username' => 'required|string|unique:users,username',
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|min:6|confirmed',
         'role' => 'required|string|exists:roles,name',
+        'active_date' => 'required',
+
     ]);
 
     $user = User::create([
@@ -70,6 +73,9 @@ public function generateUsername()
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
+        'active'=>$request->active,
+        'active_date'=>$request->active_date,
+
     ]);
 
     $user->assignRole($request->role);
@@ -86,6 +92,7 @@ public function generateUsername()
 
     public function update(Request $request, User $user)
 {
+    // dd($request->all());
     $request->validate([
         'name' => 'required|string|max:255',
         'username' => 'required|string|max:255|unique:users,username,' . $user->id,
@@ -97,6 +104,10 @@ public function generateUsername()
         'name' => $request->name,
         'username' => $request->username,
         'email' => $request->email,
+        'active'=>$request->active,
+        'active_date'=>$request->active_date,
+
+
     ]);
     $user->syncRoles($request->role ?? []);
     // dd($user->syncRoles($request->roles ?? []));

@@ -45,6 +45,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Roles</th>
+                                            <th>Status</th>
                                             <th>Created At</th>
                                             <th>Actions</th>
                                         </tr>
@@ -60,9 +61,22 @@
                                                 <span class="badge bg-success">{{ $role->name }}</span>
                                                 @endforeach
                                             </td>
+                                            <td>
+                                                @if($user->active === 'active')
+                                                    <span class="badge bg-success">Active</span>
+                                                @else
+                                                    <span class="badge bg-danger">Inactive</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                             <td>
                                                 <ul class="action list-inline mb-0">
+                                                    <li class="list-inline-item edit">
+                                                        <a href="{{ route('impersonate', ['user_id' => $user->id]) }}"
+                                                            class="login">
+                                                            <i class="fas fa-sign-in-alt"></i> <!-- Login icon -->
+                                                        </a>
+                                                    </li>
                                                     <li class="list-inline-item edit">
                                                         <a href="{{ route('users.edit', $user->id) }}"
                                                             class="edit-btnn">

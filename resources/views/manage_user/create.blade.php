@@ -50,6 +50,27 @@
             @error('role') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
 
+        <div class="form-group">
+            <label for="active_till">{{ __('Active Till') }}:*</label>
+            <input type="date" name="active_date" id="active_till" class="form-control" 
+                   value="{{ old('active_till', isset($user) ? $user->active_date : '') }}" 
+                   required placeholder="{{ __('Select active till date') }}">
+        </div>
+        
+
+        <div class="mb-3">
+            <label class="form-label">User Status:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="active" value="active" id="status-active" checked>
+                <label class="form-check-label" for="status-active">Active</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="active" value="inactive" id="status-inactive">
+                <label class="form-check-label" for="status-inactive">Inactive</label>
+            </div>
+        </div>
+        
+
         <button type="submit" class="btn btn-primary">Create User</button>
         <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
