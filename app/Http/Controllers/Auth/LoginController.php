@@ -86,16 +86,21 @@ class LoginController extends Controller
         }
 
         $user = User::where('username', $request->username)->first();
-        // dd($user);
-        if($user->active=='inactive'){
+        if($user && $user->active=='inactive'){
             // dd('sds');
             return view('errors.active_over');
 
+        }elseif(!$user){
+            return redirect()->back()
+            ->withErrors(['username' => 'Invalid credentials'])
+            ->withInput();
         }
 
+        // dd($user);
 
         // Attempt to authenticate the user
         if (Auth::attempt($request->only('username', 'password'), $request->has('remember'))) {
+            // DD('WSD');
             $user = Auth::user();
 
             if ($request->expectsJson()) {
@@ -117,9 +122,8 @@ class LoginController extends Controller
             ], 401);
         }
 
-        return redirect()->back()
-            ->withErrors(['username' => 'Invalid credentials'])
-            ->withInput();
+        
+        
     }
 
 

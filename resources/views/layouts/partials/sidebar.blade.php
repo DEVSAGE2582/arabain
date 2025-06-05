@@ -1,3 +1,4 @@
+
 <aside class="page-sidebar">
     <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
     <div class="main-sidebar" id="main-sidebar">
@@ -21,7 +22,7 @@
         @endphp
 
 
-        @if (!empty($userPermissions['dashboard.dashboard']))
+        @if (!empty($userPermissions['dashboard']))
         <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="{{route('dashboard')}}">
                     <svg class="stroke-icon">
@@ -53,7 +54,7 @@
             </li>
             @endif
 
-        @if (!empty($userPermissions['users.show']))
+        @if (!empty($userPermissions['users.show']) && Auth::user()->hasRole(2))
 
             <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="javascript:void(0)">
